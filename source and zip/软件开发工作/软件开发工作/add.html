@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>add</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./css/add.css" type="text/css" rel="stylesheet">
+    <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="./js/add.js" type="text/javascript"></script>
+</head>
+<body>
+    <header>
+        <h1>我的问卷</h1>
+        <hr>
+    </header>
+    <div class="sidebar">
+        <h3>共同管理者</h3>
+        <p>
+            <span class="name">xxx</span><br>
+            <span class="name">xxx</span><br>
+        </p>
+        
+    </div>
+    <div class="content">
+        <form>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入您所添加用户的ID号">
+                <span class="input-group-addon glyphicon glyphicon-search"></span>
+            </div>
+            <div class="select">  
+                <p>请选择管理者权限类型：</p>
+                <p class="option">
+                    <input type="radio" name="limit">可查看结果<br>
+                    <input type="radio" name="limit">可修改问卷<br>
+                </p>
+                <input type="submit" value="确认" class="submit">
+            </div>  
+        </form>
+    </div>
+</body>
+</html>

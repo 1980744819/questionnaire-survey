@@ -1,0 +1,26 @@
+body{
+    margin:5px 100px;
+}
+header{
+    text-align:center;
+}
+.questionnaire{
+    width:800px;
+    height:100px;
+    margin-left:150px;
+    border:1px solid #bebebe;
+    position:relative;
+}
+.contant{
+    padding:10px;
+}
+.table{
+    display:table;
+    padding:10px;
+}
+.table-row{
+    display:table-row;
+}
+.table-cell{
+    display:table-cell;
+}

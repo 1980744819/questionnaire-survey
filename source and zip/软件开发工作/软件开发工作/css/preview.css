@@ -1,0 +1,23 @@
+body{
+    margin:5px 100px;
+}
+header{
+    text-align:center;
+}
+/*排列框*/
+.result{
+    border:1px solid #bebebe;
+    margin:50px;
+    position:relative;
+    padding:10px;
+}
+.type{
+    position:absolute;
+    right:200px;
+}
+.glyphicon-asterisk{
+    color:red;
+    position:absolute;
+    top:10px;
+    right:20px;
+}

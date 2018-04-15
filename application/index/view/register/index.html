@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/questionnaire-survey/public/static/css/style.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<div class="main">
+    <div class="login">
+        <h1>注册</h1>
+        <div class="inset">
+            <form name="register" action="{:url('index/register/add')}" method="post">
+                <div>
+                    <h2>用户登录</h2>
+                    <span><label>用户名</label></span>
+                    <span><input type="text" name="name" class="textbox" ></span>
+                </div>
+                <div>
+                    <span><label>密码</label></span>
+                    <span><input type="password" name="password1" class="password"></span>
+                </div>
+                <div>
+                    <span><label>确认密码</label></span>
+                    <span><input type="password" name="password2" class="password"></span>
+                </div>
+                <div class="sign">
+                    <input type="submit" value="注册" class="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="text-align:center;">
+    <p><a href="{:url('index/login/index')}">已有账号 直接登录</a></p>
+</body>
+</html>
