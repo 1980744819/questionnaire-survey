@@ -23,7 +23,7 @@ class Login extends Controller
 //        $user->name=$post_data['name'];
 //        $user->password=$post_data['password'];
         if(Users::login($post_data['name'],$post_data['password'])){
-            $this->success('success','Home/index');
+            $this->success('success','Manage/index');
         }
         else{
             $this->error('failed');

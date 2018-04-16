@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>manage</title>
+    <link href="/questionnaire-survey/public/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/questionnaire-survey/public/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/questionnaire-survey/public/static/css/manage.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>我的问卷</h1>
+    <hr>
+</header>
+<div class="questionnaire table">
+    <div class="table-row">
+        <span class="table-cell">xx问卷</span> <span class="table-cell">ID:xxx</span>
+        <span class="table-cell">问卷状态</span>  <span class="table-cell">创建时间</span> <a href="{:url('preview')}" class="table-cell">预览</a><br>
+    </div>
+    <div class="table-row"><a href="#" class="table-cell">修改问卷</a>  <a href="{:url('add')}" class="table-cell">添加共同管理者</a>
+        <a href="{:url('analyze')}" class="table-cell">统计分析</a>  <a href="#" class="table-cell">发布/停止</a></div>
+</div>
+</body>
+</html>
