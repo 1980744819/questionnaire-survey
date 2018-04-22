@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>analyze</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./css/main.css" type="text/css" rel="stylesheet">
+    <link href="./css/analyze.css" type="text/css" rel="stylesheet">
+    <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="./js/add.js" type="text/javascript"></script>
+</head>
+<body>
+    <header>
+        <h1>分析问卷</h1>
+        <a href="#" class="out">退出登录</a>
+        <hr>
+    </header>
+    <nav>
+        <ul class="nav nav-pills nav-justified">
+            <li><a href="create.html"><span class="glyphicon glyphicon-edit "></span>&nbsp;<span class="big">创建问卷</span></a></li>
+            <li class="active"><a href="manage.html"><span class="glyphicon glyphicon-list-alt "></span>&nbsp;<span class="big">我的问卷</span></a></li>
+            <li><a href="imformation.html"><span class="glyphicon glyphicon-user"></span>&nbsp;<span class="big">个人中心</span></a></li>
+        </ul>
+    </nav>
+    <h4>截至目前有效问卷数：xx</h4>
+    <div class="result">
+        <p>题目内容：xxxxxxxxx  <span class="type">单选题/多选题</span><span class="glyphicon glyphicon-asterisk"></span></p>
+        <table>
+            <tr>
+                <th>选项</th>
+                <th>数量</th>
+            </tr>
+            <tr>
+                <td>大一</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>大一</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </div>
+    <div class="result" id="introduction">
+        <p>题目内容：xxxxxxxxx <span class="type">简答题</span><span class="glyphicon glyphicon-plus extend" onclick="extend()"></span></p> 
+        <p>详细内容：<br>
+            <p class="answer">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            <p class="answer">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+        </p>
+        <script>
+            var count=0;
+            function extend()
+            {
+                count++;
+                var introduction=document.getElementById("introduction");
+                if(count%2!=0){
+                    introduction.style.overflow="visible";
+                    introduction.style.height="auto";
+                }
+                else{
+                    introduction.style.overflow="hidden";
+                    introduction.style.height="120px";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -4,24 +4,42 @@
     <title>preview</title>
     <link href="/questionnaire-survey/public/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/questionnaire-survey/public/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/questionnaire-survey/public/static/css/main.css" type="text/css" rel="stylesheet">
     <link href="/questionnaire-survey/public/static/css/preview.css" type="text/css" rel="stylesheet">
     <script src="/questionnaire-survey/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 </head>
 <body>
 <header>
     <h1>预览问卷</h1>
+    <a href="#" class="out">退出登录</a>
     <hr>
 </header>
+<nav>
+    <ul class="nav nav-pills nav-justified">
+        <li><a href="{:url('create')}"><span class="glyphicon glyphicon-edit "></span>&nbsp;<span class="big">创建问卷</span></a>
+        </li>
+        <li class="active"><a href="{:url('index')}"><span class="glyphicon glyphicon-list-alt "></span>&nbsp;<span
+                class="big">我的问卷</span></a></li>
+        <li><a href="{:url('index/user/information')}"><span class="glyphicon glyphicon-user"></span>&nbsp;<span class="big">个人中心</span></a>
+        </li>
+    </ul>
+</nav>
+{for start="0" end="count($array)" name="i"}
 <div class="result">
-    题目内容：xxxxxxxxxxx  <span class="type">单选题</span><span class="glyphicon glyphicon-asterisk"></span><br>
-    <span class="glyphicon glyphicon-record">选项</span>
+    <span>题目内容：{$questions[$i]->question}</span> <span class="type">
+    {if condition="$questions[$i]->type==0"}单选题
+    {elseif condition="$questions[$i]->type==1" /}多选题
+    {else /}简答题
+    {/if}
+    </span>
+    <span
+            class="glyphicon glyphicon-asterisk"></span><br>
+    {for start="0" end="count($options[$i])" name="j"}
+    <span class="glyphicon glyphicon-record">选项{$j}:{$options[$i][$j]->option}</span>
+    {/for}
+
 </div>
-<div class="result">
-    题目内容：xxxxxxxxxxx <span class="type">多选题</span><br>
-    <span class="glyphicon glyphicon-unchecked">选项</span>
-</div>
-<div class="result">
-    题目内容：xxxxxxxxxxx <span class="type">简答题</span><br>
-</div>
+
+{/for}
 </body>
 </html>

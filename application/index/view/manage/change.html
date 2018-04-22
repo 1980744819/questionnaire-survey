@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改问卷</title>
+    <link href="/questionnaire-survey/public/static/css/main.css" type="text/css" rel="stylesheet">
+    <script src="/questionnaire-survey/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <link href="/questionnaire-survey/public/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/questionnaire-survey/public/static/css/create.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="/questionnaire-survey/public/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/questionnaire-survey/public/static/js/change.js" type="text/javascript"></script>
+    <script src="/questionnaire-survey/public/static/js/create.js" type="text/javascript"></script>
+</head>
+<body>
+
+<header>
+    <h1>修改问卷</h1>
+    <hr>
+</header>
+
+<div id="silent">
+    <div class="name">
+        <form class="bs-example bs-example-form" role="form">
+            <div class="input-group">
+                <span class="input-group-addon">问卷名称</span>
+                <input type="text" class="form-control" value="{$survey->title}">
+            </div>
+        </form>
+    </div>
+
+    <div class="introduction">
+        <form class="bs-example bs-example-form" role="form">
+            <div class="input-group">
+                <span class="input-group-addon">问卷简介</span>
+                <input type="text" class="form-control" value="{$survey->description}">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="choose">
+    <ul id="mytab" class="nav nav-pills nav-justified" role='tablist'>
+        <li role='presentation' class='active' id="single"><a href="#cj">单选题</a></li>
+        <li role='presentation' id="checkbox"><a>多选题</a></li>
+        <li role='presentation' id="question"><a>简答题</a></li>
+        <li role='presentation' id="order"><a>排序题</a></li>
+    </ul>
+</div>
+
+<div id="goto">
+    <a href="#silent">
+        <image class="top" src="/questionnaire-survey/public/static/image/top_01.png" title="到顶"></image>
+    </a>
+    <a href="#cj">
+        <image class="bottom" src="/questionnaire-survey/public/static/image/bottom_01.png" title="到底"></image>
+    </a>
+</div>
+
+<div class="div_type">
+    <div class="div_hide">
+        {for start="0" end="count($array)" name="i"}
+            {if condition="$questions[$i]->type==0"}
+            <div class="div_single">
+                <textarea class="inputk bt dx" placeholder="单选题目"></textarea>
+                <div class="big_contend">
+                    <div class="contend">
+                        {for start="0" end="count($options[$i])" name="j"}
+                            <input type="radio">
+                            <input type="text" class="inputk" placeholder="选项" value="">
+                        {/for}
+                        <input type="radio">
+
+                        <input type="text" class="inputk" placeholder="选项">
+                        <label>
+                            <input type="checkbox" class="checkbox">
+                            <span class="tk">可填空</span>
+                        </label>
+                        <a href="javascript:void(0);" class="del_choice">删除</a>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class="add_choice">增加选项</a>
+                <div class="box_bianji">
+                    <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                    <a href="javascript:void(0);" class="save"> 完成编辑</a>
+                </div>
+            </div>
+            {elseif condition="$questions[$i]->type==1" /}
+            {else /}
+            {/if}
+        {/for}
+
+
+        <!--单选-->
+        <div class="div_single">
+            <textarea class="inputk bt dx" placeholder="单选题目"></textarea>
+            <div class="big_contend">
+                <div class="contend">
+                    <input type="radio">
+                    <input type="text" class="inputk" placeholder="选项">
+                    <label>
+                        <input type="checkbox" class="checkbox">
+                        <span class="tk">可填空</span>
+                    </label>
+                    <a href="javascript:void(0);" class="del_choice">删除</a>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="add_choice">增加选项</a>
+            <div class="box_bianji">
+                <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                <a href="javascript:void(0);" class="save"> 完成编辑</a>
+            </div>
+        </div>
+
+
+        <!--多选-->
+        <div class="div_checkbox">
+            <textarea class="inputk bt duox" placeholder="多选题目"></textarea>
+            <div class="big_contend">
+                <div class="contend">
+                    <input type="checkbox">
+                    <input type="text" class="inputk" placeholder="选项">
+                    <label>
+                        <input type="checkbox" class="checkbox">
+                        <span class="tk">可填空</span>
+                    </label>
+                    <a href="javascript:void(0);" class="del_choice">删除</a>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="add_choice">增加选项</a>
+            <div class="box_bianji">
+                <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                <a href="javascript:void(0);" class="save"> 完成编辑</a>
+            </div>
+        </div>
+
+
+        <!-- 填空-->
+        <div class="div_question">
+            <textarea class="inputk bt jd" placeholder="答题区"></textarea>
+            <div class="box_bianji">
+                <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                <a href="javascript:void(0);" class="save"> 完成编辑</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(".div_single").hide();
+    $(".div_checkbox").hide();
+    $(".div_question").hide();
+</script>
+
+<div class="all_660">
+    <div class="addhere">
+        <div class="line_box">
+            <ul class="head_list">
+                <li>
+                    <div class="head_title"><strong class="num">1</strong>. <strong class="bianji">单选1</strong><strong
+                            class="tip">【单选】</strong></div>
+                </li>
+                <li>
+                    <label>
+                        <input name="a" type="radio" value="">
+                        <span>1</span></label>
+                </li>
+                <li>
+                    <label>
+                        <input name="a" type="radio" value="">
+                        <span>其他</span> <input name="" type="text" class="wenb_input"></label>
+                </li>
+            </ul>
+            <div class="box_xh" data-t="1"></div>
+        </div>
+        <div class="line_box">
+            <ul class="head_list">
+                <li>
+                    <div class="head_title"><strong class="num">2</strong>. <strong class="bianji">多选1</strong><strong
+                            class="tip">【多选】</strong></div>
+                </li>
+                <li>
+                    <label>
+                        <input name="" type="checkbox" value="">
+                        <span>1</span></label>
+                </li>
+                <li>
+                    <label>
+                        <input name="" type="checkbox" value="">
+                        <span> 其他</span>
+                        <input name="" type="text" class="wenb_input">
+                    </label>
+                </li>
+            </ul>
+            <div class="box_xh" data-t="2"></div>
+        </div>
+        <div class="line_box">
+            <ul class="head_list">
+                <li>
+                    <div class="head_title"><strong class="num">3</strong>. <strong class="bianji">简答1</strong><strong
+                            class="tip">【简答】</strong></div>
+                </li>
+                <li>
+                    <label>
+                        <textarea name="" cols="" rows="" class="inputk bt dx" onblur="if(!this.value)this.value='单选题目'"
+                                  onclick="if(this.value&&this.value=='单选题目' )  this.value=''"></textarea>
+                    </label>
+                </li>
+            </ul>
+            <div class="box_xh" data-t="3"></div>
+        </div>
+        <div class="line_box">
+            <ul class="head_list">
+                <li>
+                    <div class="head_title"><strong class="num">4</strong>. <strong class="bianji">排序1</strong><strong
+                            class="tip">【排序】</strong></div>
+                </li>
+                <li>
+                    <label>
+                        <input name="" type="checkbox" value="">
+                        <span>1</span></label>
+                </li>
+                <li>
+                    <label>
+                        <input name="" type="checkbox" value="">
+                        <span> 其他</span>
+                        <input name="" type="text" class="wenb_input">
+                    </label>
+                </li>
+            </ul>
+            <div class="box_xh" data-t="4"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="{:url('index')}" class="cjwj" id="cj" onclick="alert('修改成功！')">保存问卷</a>
+
+</footer>
+</body>
+</html>

@@ -24,5 +24,32 @@ class Users extends Model
     static public function logout(){
         session('user_id',null);
     }
+    static public function islogin(){
+        $user_id=session('user_id');
+        if($user_id===null)
+            return false;
+        return true;
+    }
+    static public function isregistered($name)
+    {
+        $user=self::where('name',$name)->find();
+        if (is_null($user))
+            return false;
+        return true;
+    }
+    static public function changepassword($old,$new)
+    {
+        $user_id=session('user_id');
+        $user=self::get($user_id);
+        var_dump($user);
+        if($user->getData('password')==$old){
+            $user->password=$new;
+            $user->save();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

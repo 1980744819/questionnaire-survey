@@ -9,9 +9,15 @@
 namespace app\index\controller;
 
 
-class Home
+use app\index\model\Users;
+
+
+class Home extends Par
 {
     public function index(){
-        return 'welcome';
+//        return 'welcome';
+        if(Users::islogin()){
+            return $this->error('have not login','Login/index');
+        }
     }
 }

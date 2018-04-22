@@ -18,11 +18,11 @@ CREATE TABLE `think_survey` (
 
 
 CREATE TABLE `think_arrangement`(
- `sid` int(11) not null AUTO_INCREMENT COMMENT '问卷id',
+  `aid` int(11) PRIMARY KEY not null auto_increment COMMENT 'id',
+ `sid` int(11) not null  COMMENT '问卷id',
  `id` int(11) not null COMMENT '用户id',
  `grant` tinyint(1) not null COMMENT '管理权限',
  `notice` tinyint(1) not null COMMENT '是否tixing',
-  primary key(`sid`,`id`),
   foreign key(`sid`) references survey(`sid`) on update cascade,
   foreign key(`id`) references users(`id`) on update cascade
  );

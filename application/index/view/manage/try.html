@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>凉凉</title>
+    <link href="/questionnaire-survey/public/static//css/main.css" type="text/css" rel="stylesheet">
+    <script src="/questionnaire-survey/public/static//js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <link href="/questionnaire-survey/public/static//bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/questionnaire-survey/public/static//css/create.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="/questionnaire-survey/public/static//bootstrap/js/bootstrap.min.js"></script>
+    <script src="/questionnaire-survey/public/static//js/change.js" type="text/javascript"></script>
+    <script src="/questionnaire-survey/public/static//js/create.js" type="text/javascript"></script>
+</head>
+<body>
+
+<header>
+    <h1>要死</h1>
+    <hr>
+</header>
+
+<form method="post" action="{:url('add_try')}">
+    <div id="silent">
+        <div class="name">
+            <div class="input-group">
+                <span class="input-group-addon">问卷名称</span>
+                <input type="text" class="form-control" name="title">
+            </div>
+        </div>
+
+        <div class="introduction">
+
+            <div class="input-group">
+                <span class="input-group-addon">问卷简介</span>
+                <input type="text" class="form-control" name="description">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="choose">
+        <ul id="mytab" class="nav nav-pills nav-justified" role='tablist'>
+            <li role='presentation' class='active' id="single"><a href="#cj">单选题</a></li>
+            <li role='presentation' id="checkbox"><a>多选题</a></li>
+            <li role='presentation' id="question"><a>简答题</a></li>
+            <li role='presentation' id="order"><a>排序题</a></li>
+        </ul>
+    </div>
+
+    <div id="goto">
+        <a href="#silent">
+            <image class="top" src="/questionnaire-survey/public/static//image/top_01.png" title="到顶"></image>
+        </a>
+        <a href="#cj">
+            <image class="bottom" src="/questionnaire-survey/public/static//image/bottom_01.png" title="到底"></image>
+        </a>
+    </div>
+
+    <div class="div_type">
+        <div class="div_hide">
+
+
+            <!--单选-->
+            <div class="div_single">
+
+
+                <textarea class="inputk bt dx" placeholder="单选题目" name="question[1]"></textarea>
+                <div class="big_contend">
+                    <div name="sum[1]" value="">
+                    <div class="contend">
+                        <input type="radio">
+                        <input type="text" class="inputk" name="radio[1]" placeholder="选项"><br/>
+                        <input type="radio">
+                        <input type="text" class="inputk" name="radio[2]" placeholder="选项"><br/>
+                        <input type="radio">
+                        <input type="text" class="inputk" name="radio[3]" placeholder="选项"><br/>
+                        <input type="radio">
+                        <input type="text" class="inputk" name="radio[4]" placeholder="选项"><br/>
+                    </div>
+                </div>
+                <div class="box_bianji">
+                    <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                </div>
+
+            </div>
+
+
+            <!--多选-->
+            <div class="div_checkbox">
+                <textarea class="inputk bt duox" placeholder="多选题目" name="question[2]"></textarea>
+                <div class="big_contend">
+                    <div class="contend">
+                        <input type="checkbox">
+<input type="text" class="inputk" placeholder="选项" name="radio[5]">
+<br/>
+                        <input type="checkbox">
+<input type="text" class="inputk" placeholder="选项" name="radio[6]">
+<br/>
+                        <input type="checkbox">
+<input type="text" class="inputk" placeholder="选项" name="radio[7]">
+<br/>
+                        <input type="checkbox">
+<input type="text" class="inputk" placeholder="选项" name="radio[8]">
+<br/>
+                    </div>
+                </div>
+                <div class="box_bianji">
+                    <a href="javascript:void(0);" class="cancel">取消编辑</a>
+
+                </div>
+            </div>
+
+
+            <!-- 填空-->
+            <div class="div_question">
+                <textarea class="inputk bt jd" placeholder="答题区" name="question[3]"></textarea>
+                <div class="box_bianji">
+                    <a href="javascript:void(0);" class="cancel">取消编辑</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <input type="submit" id="btn_save" value="完成" onclick="window.location.href='recieve.jsp'"/>
+        <a href="preview.html">
+            <image class="look" src="/questionnaire-survey/public/static//image/look.png" title="预览"></image>
+        </a>
+    </footer>
+</form>
+
+</body>
+</html>
