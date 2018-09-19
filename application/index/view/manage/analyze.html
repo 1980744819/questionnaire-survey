@@ -13,7 +13,53 @@
     <h1>分析问卷</h1>
     <hr>
 </header>
-<h4>截至目前有效问卷数：xx</h4>
+<h4>截至目前有效问卷数：{$sum}</h4>
+{for start="0" end="count($questions)",name="i"}
+<div class="result">
+    <p>题目内容：{$questions[$i]->question}
+    {if condition="$questions[$i]->type==0"}
+        <span class="type">多选题</span><span class="glyphicon glyphicon-asterisk"></span></p>
+        <table>
+            {for start="0" end="count($options[$i])" name="j"}
+                <tr>
+                    <th>{$options[$i][$j]->option}</th>
+                </tr>
+            {/for}
+        </table>
+    <p>结果</p><br>
+
+            {for start="0" end="count($answers[$i])" name="j"}
+            {$answers[$i][$j]->answer}
+            {/for}
+
+
+    {elseif condition="$questions[$i]->type==1" /}
+        <span class="type">多选题</span><span class="glyphicon glyphicon-asterisk"></span></p>
+        <table>
+            {for start="0" end="count($options[$i])" name="j"}
+            <tr>
+                <th>{$options[$i][$j]->option}</th>
+            </tr>
+            {/for}
+            <p>结果</p><br>
+
+            {for start="0" end="count($answers[$i])" name="j"}
+            {$answers[$i][$j]->answer}
+            {/for}
+        </table>
+    {else /}
+    <span class="type">简答题</span><span class="glyphicon glyphicon-plus extend" onclick="extend()"></span></p>
+    <p>详细内容：<br>
+    <p>{$questions[$i]->question}</p>
+    <p>结果</p><br>
+
+    {for start="0" end="count($answers[$i])" name="j"}
+    {$answers[$i][$j]->answer}
+    {/for}
+    </p>
+    {/if}
+</div>
+{/for}
 <div class="result">
     <p>题目内容：xxxxxxxxx  <span class="type">单选题/多选题</span><span class="glyphicon glyphicon-asterisk"></span></p>
     <table>

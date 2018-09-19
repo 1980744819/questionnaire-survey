@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 
+use app\index\model\Answer;
 use app\index\model\Arrangement;
 use app\index\model\Option;
 use app\index\model\Question;
@@ -41,25 +42,41 @@ class Manage extends Par
 
     public function add($survey_id)
     {
-        $arranges=Arrangement::all(['sid'=>$survey_id]);
-        $people=array();
-        foreach ($arranges as $arrange){
-            $user=Users::get($arrange->id);
-            array_push($people,$user);
+        $arranges = Arrangement::all(['sid' => $survey_id]);
+        $people = array();
+        foreach ($arranges as $arrange) {
+            $user = Users::get($arrange->id);
+            array_push($people, $user);
         }
-        $this->assign('people',$people);
-        $this->assign('survey_id',$survey_id);
+        $this->assign('people', $people);
+        $this->assign('survey_id', $survey_id);
         return $this->fetch();
     }
 
     public function add_manager($survey_id)
     {
-        $post_data=Request::instance()->post();
+        $post_data = Request::instance()->post();
         var_dump($post_data);
 //        return $this->success('success','add');
     }
-    public function analyze()
+
+    public function analyze($survey_id)
     {
+        $survey = Survey::get(['sid' => $survey_id]);
+        $questions = Question::all(['sid' => $survey_id]);
+        $optionss = array();
+        $answerss = array();
+        foreach ($questions as $question) {
+            $options = Option::all(['qid' => $question->qid]);
+            array_push($optionss, $options);
+            $answers = Answer::all(['qid' => $question->qid]);
+            array_push($answerss, $answers);
+        }
+        $this->assign('sum', count($answerss[0]));
+        $this->assign('questions', $questions);
+        $this->assign('answers', $answerss);
+        $this->assign('options',$optionss);
+//        var_dump($questions);
         return $this->fetch();
     }
 
@@ -70,64 +87,63 @@ class Manage extends Par
 
     public function preview($survey_id)
     {
-        $questions=Question::all(['sid'=>$survey_id]);
-        $questions=array_reverse($questions);
-        $options_array=array();
+        $questions = Question::all(['sid' => $survey_id]);
+        $questions = array_reverse($questions);
+        $options_array = array();
 
-        foreach ($questions as $question){
-            $options=Option::all(['qid'=>$question->qid]);
-            $options=array_reverse($options);
-            array_push($options_array,$options);
+        foreach ($questions as $question) {
+            $options = Option::all(['qid' => $question->qid]);
+            $options = array_reverse($options);
+            array_push($options_array, $options);
         }
 //        var_dump($questions);
 //        var_dump($options_array);
-        $this->assign('array',$options_array);
-        $this->assign('questions',$questions);
-        $this->assign('options',$options_array);
+        $this->assign('array', $options_array);
+        $this->assign('questions', $questions);
+        $this->assign('options', $options_array);
         return $this->fetch();
     }
 
     public function write($survey_id)
     {
-        $questions=Question::all(['sid'=>$survey_id]);
+        $questions = Question::all(['sid' => $survey_id]);
 //        $questions=array_reverse($questions);
-        $options_array=array();
+        $options_array = array();
 
-        foreach ($questions as $question){
-            $options=Option::all(['qid'=>$question->qid]);
+        foreach ($questions as $question) {
+            $options = Option::all(['qid' => $question->qid]);
 //            $options=array_reverse($options);
-            array_push($options_array,$options);
+            array_push($options_array, $options);
         }
 //        var_dump($questions);
 //        var_dump($options_array);
-        $this->assign('array',$options_array);
-        $this->assign('questions',$questions);
-        $this->assign('options',$options_array);
-        $this->assign('survey_id',$survey_id);
+        $this->assign('array', $options_array);
+        $this->assign('questions', $questions);
+        $this->assign('options', $options_array);
+        $this->assign('survey_id', $survey_id);
         return $this->fetch();
 
     }
 
 
-
     public function change($survey_id)
     {
-        $survey=Survey::get($survey_id);
-        $questions=Question::all(['sid'=>$survey_id]);
-        $questions=array_reverse($questions);
-        $options_array=array();
+        $survey = Survey::get($survey_id);
+        $questions = Question::all(['sid' => $survey_id]);
+        $questions = array_reverse($questions);
+        $options_array = array();
 
-        foreach ($questions as $question){
-            $options=Option::all(['qid'=>$question->qid]);
-            $options=array_reverse($options);
-            array_push($options_array,$options);
+        foreach ($questions as $question) {
+            $options = Option::all(['qid' => $question->qid]);
+            $options = array_reverse($options);
+            array_push($options_array, $options);
         }
 //        var_dump($questions);
 //        var_dump($options_array);
-        $this->assign('survey',$survey);
-        $this->assign('array',$options_array);
-        $this->assign('questions',$questions);
-        $this->assign('options',$options_array);
+        $this->assign('survey', $survey);
+        $this->assign('array', $options_array);
+        $this->assign('questions', $questions);
+        $this->assign('options', $options_array);
         return $this->fetch();
     }
 

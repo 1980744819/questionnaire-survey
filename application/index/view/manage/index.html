@@ -59,7 +59,7 @@
     <div class="table-row">
         <a href="{:url('change',['survey_id'=>$survey->sid])}" class="table-cell">修改问卷</a>
         <a href="{:url('add',['survey_id'=>$survey->sid])}" class="table-cell">添加共同管理者</a>
-        <a href="analyze.html" class="table-cell">统计分析</a>
+        <a href="{:url('analyze',['survey_id'=>$survey->sid])}" class="table-cell">统计分析</a>
         <a href="{:url('write',['survey_id'=>$survey->sid])}" class="table-cell">发布</a>
         <a href="#" class="table-cell" onclick="del(this)">删除</a>
     </div>
